@@ -1,0 +1,28 @@
+.faq_tree .faq_tree_children{
+    padding-left: 20px;
+}
+
+.faq_tree details{
+    padding: 3px;
+}
+
+.faq_tree summary{
+    position: relative;
+}
+
+.faq_tree details > summary::after{
+    content: url("up.svg");
+    padding: 0 5px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.faq_tree details[open] > summary::after{
+    content: url("down.svg");
+}
+
+.faq_tree .add {
+    padding: 0 3px;
+}
