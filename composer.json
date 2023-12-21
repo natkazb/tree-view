@@ -1,0 +1,17 @@
+{
+    "name": "nzbiranik/tree-view",
+    "description": "View of tree structures",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Nzbiranik\\TreeView\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "n.zbiranik",
+            "email": "n.zbiranik@cdek.ru"
+        }
+    ],
+    "require": {}
+}
