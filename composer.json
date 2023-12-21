@@ -1,7 +1,8 @@
 {
     "name": "nzbiranik/tree-view",
-    "description": "View of tree structures",
-    "type": "library",
+    "description": "Yii2 view of tree structures",
+    "type": "yii2-extension",
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "Nzbiranik\\TreeView\\": "src/"
@@ -10,8 +11,16 @@
     "authors": [
         {
             "name": "n.zbiranik",
-            "email": "n.zbiranik@cdek.ru"
+            "email": "n.zbiranik@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=8.0",
+        "yiisoft/yii2": "^2.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
+        }
+    }
 }
