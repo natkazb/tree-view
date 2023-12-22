@@ -1,13 +1,12 @@
 <?php
 
-use admin\modules\faq\models\Faq;
-use admin\modules\faq\widgets\Tree;
+use Nzbiranik\TreeView\Tree;
 
-/** @var Faq[] $items */
+/** @var array $items */
 /** @var Tree $widget */
 ?>
 <div class="faq_tree">
-    <?php echo $widget->render('_tree', [
+    <?php echo $widget->render('_children', [
         'items' => $items,
         'widget' => $widget,
         'parentId' => null,

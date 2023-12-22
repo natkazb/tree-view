@@ -1,11 +1,10 @@
 <?php
 
-use admin\modules\faq\models\Faq;
-use admin\modules\faq\widgets\Tree;
+use Nzbiranik\TreeView\Tree;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-/** @var Faq[] $items */
+/** @var array $items */
 /** @var Tree $widget */
 /** @var ?int $parentId */
 ?>
@@ -14,7 +13,7 @@ use yii\helpers\Url;
     <details>
         <summary><?= Html::a($item->title, ['view', 'id' => $item->id]); ?></summary>
         <div class="faq_tree_children">
-            <?php echo $widget->render('_tree', [
+            <?php echo $widget->render('_children', [
                 'items' => $widget->getItems($item->id),
                 'widget' => $widget,
                 'parentId' => $item->id,
