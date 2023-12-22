@@ -8,7 +8,8 @@ use Nzbiranik\TreeView\assets\TreeAsset;
 
 class Tree extends Widget
 {
-    public string $parentField = 'parent_id';
+    public string $idField = 'id';
+    public string $titleField = 'title';
     public ?Closure $functionItems;
 
     public function getItems(?int $parent = null): array
