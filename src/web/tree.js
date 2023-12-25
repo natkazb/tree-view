@@ -3,10 +3,10 @@ $(function () {
 });
 
 const Tree = {
-    selector: '.faq_tree details',
+    selector: '.Nzbiranik_tree_view .tree details',
     init: function () {
-        $('.faq_expand .open-all').on('click', Tree.open);
-        $('.faq_expand .close-all').on('click', Tree.close);
+        $('.Nzbiranik_tree_view .open-all').on('click', Tree.open);
+        $('.Nzbiranik_tree_view .close-all').on('click', Tree.close);
     },
     open: function () {
         const elements = document.querySelectorAll(Tree.selector);
