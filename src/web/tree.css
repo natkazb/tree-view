@@ -30,3 +30,11 @@
 .Nzbiranik_tree .Nzbiranik_tree_add-child {
     padding: 0 3px;
 }
+
+.Nzbiranik_tree .Nzbiranik_tree_draggable-item_dragging {
+    border: 1px solid darkorange;
+}
+
+.Nzbiranik_tree .Nzbiranik_tree_draggable-item_dragging {
+    border: 1px solid green;
+}
