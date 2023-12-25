@@ -56,6 +56,7 @@ const Tree = {
                 }
             }));
         }
+        e.stopImmediatePropagation();
     },
     dragging: function (e) {
         e.target.classList.add('Nzbiranik_tree_draggable-item_dragging');
