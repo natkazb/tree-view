@@ -3,10 +3,10 @@ $(function () {
 });
 
 const Tree = {
-    selector: '.Nzbiranik_tree_view .tree details',
+    selector: '.Nzbiranik_tree_view .Nzbiranik_tree details',
     init: function () {
-        $('.Nzbiranik_tree_view .open-all').on('click', Tree.open);
-        $('.Nzbiranik_tree_view .close-all').on('click', Tree.close);
+        $('.Nzbiranik_tree_view .Nzbiranik_buttons .Nzbiranik_button-open').on('click', Tree.open);
+        $('.Nzbiranik_tree_view .Nzbiranik_buttons .Nzbiranik_button-close').on('click', Tree.close);
     },
     open: function () {
         const elements = document.querySelectorAll(Tree.selector);

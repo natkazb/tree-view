@@ -12,7 +12,7 @@ use yii\helpers\Url;
 <?php foreach ($items as $item) : ?>
     <details>
         <summary><?= Html::a($item[$widget->titleField], ['view', 'id' => $item[$widget->idField]]); ?></summary>
-        <div class="faq_tree_children">
+        <div class="Nzbiranik_tree_children">
             <?php echo $widget->render('_children', [
                 'items' => $widget->getItems($item[$widget->idField]),
                 'widget' => $widget,
@@ -21,8 +21,8 @@ use yii\helpers\Url;
         </div>
     </details>
 <?php endforeach; ?>
-<div class="add">
+<div class="Nzbiranik_tree_add-child">
     <a href="<?= Url::to(['create', 'parent' => $parentId]) ?>">
-        <i class="fa fa-plus"></i>
+        <i>+</i>
     </a>
 </div>

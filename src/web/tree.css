@@ -1,16 +1,16 @@
-.faq_tree .faq_tree_children{
+.Nzbiranik_tree_view .Nzbiranik_tree_children{
     padding-left: 20px;
 }
 
-.faq_tree details{
+.Nzbiranik_tree details{
     padding: 3px;
 }
 
-.faq_tree summary{
+.Nzbiranik_tree summary{
     position: relative;
 }
 
-.faq_tree details > summary::after{
+.Nzbiranik_tree details > summary::after{
     content: url("up.svg");
     padding: 0 5px;
     position: absolute;
@@ -19,10 +19,10 @@
     cursor: pointer;
 }
 
-.faq_tree details[open] > summary::after{
+.Nzbiranik_tree details[open] > summary::after{
     content: url("down.svg");
 }
 
-.faq_tree .add {
+.Nzbiranik_tree .Nzbiranik_tree_add-child {
     padding: 0 3px;
 }
