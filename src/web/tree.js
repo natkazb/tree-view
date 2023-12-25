@@ -27,13 +27,13 @@ const Tree = {
     },
     finish: async function (e) {
         const elemFromCoords = document.elementFromPoint(e.clientX, e.clientY);
-        const parentElem = elemFromCoords.closest('div.draggable_item');
+        const parentElem = elemFromCoords.closest('details.Nzbiranik_tree_draggable-item');
         const from = {
-            id: e.target.getAttribute('data-key'),
+            id: e.target.getAttribute('data-id'),
             title: e.target.getAttribute('data-title')
         };
         const to = {
-            id: parentElem.getAttribute('data-key'),
+            id: parentElem.getAttribute('data-id'),
             title: parentElem.getAttribute('data-title')
         };
         const yes = confirm(`Переместить '${from.title}' в '${to.title}'?`);
