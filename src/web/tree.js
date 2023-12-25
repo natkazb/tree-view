@@ -11,6 +11,17 @@ const Tree = {
         const dragElements = document.querySelectorAll('.Nzbiranik_tree_view .Nzbiranik_tree_draggable-item');
         dragElements.forEach(element => {
             element.addEventListener('dragend', Tree.finish);
+            element.addEventListener('dragenter', (event) => {
+                console.log('dragenter');
+                console.log(event.target);
+                event.preventDefault();
+            });
+
+            element.addEventListener('dragover', (event) => {
+                console.log('dragover');
+                console.log(event.target);
+                event.preventDefault();
+            });
         });
     },
     open: function () {
@@ -39,33 +50,14 @@ const Tree = {
         const yes = confirm(`Переместить '${from.title}' в '${to.title}'?`);
         if (yes) {
             parentElem.querySelector('.Nzbiranik_tree_children').append(e.target);
-            /* const data = {
-                child: from.id,
-                parent: to.id
-            };
-            $.ajax({
-                type: "POST",
-                data,
-                url: `/admin/website/website-menu/move-parent`,
-                headers: {
-                    "Accept": "application/json"
-                },
-                success: function(response) {
-                    if (response.success) {
-                        // при успехе перезагрузим страницу
-                        window.location.href = `/admin/website/website-menu/index`;
-                    } else {
-                        $.notify({message: response.error}, {
-                            type: "danger dark",
-                            animate: {exit: 'hide'},
-                            z_index: 2031
-                        });
-                    }
-                },
-                error: function(e) {
-                    console.log(e);
+            parentElem.dispatchEvent(new CustomEvent("move-parent", {
+                bubbles: true,
+                cancelable: true,
+                detail: {
+                    child: from.id,
+                    parent: to.id
                 }
-            }); */
+            }));
         }
     },
 };
