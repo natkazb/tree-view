@@ -22,7 +22,7 @@ use yii\helpers\Url;
     </details>
 <?php endforeach; ?>
 <div class="Nzbiranik_tree_add-child">
-    <a href="<?= Url::to(['create', 'parent' => $parentId]) ?>">
+    <a href="<?= Url::to([$widget->addChildUrl, 'parent' => $parentId]) ?>">
         <i>+</i>
     </a>
 </div>
