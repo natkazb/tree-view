@@ -10,7 +10,7 @@ class Tree extends Widget
 {
     public string $idField = 'id';
     public string $titleField = 'title';
-    public string $addChildUrl = 'create';
+    public string $addChildUrl;
     public ?Closure $functionItems;
 
     public function getItems(?int $parent = null): array
@@ -23,9 +23,6 @@ class Tree extends Widget
 
     public function init() {
         TreeAsset::register($this->getView());
-        if (empty($this->addChildUrl)) {
-            ;
-        }
         parent::init();
     }
 
