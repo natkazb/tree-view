@@ -38,7 +38,8 @@ const Tree = {
         };
         const yes = confirm(`Переместить '${from.title}' в '${to.title}'?`);
         if (yes) {
-            const data = {
+            parentElem.querySelector('.Nzbiranik_tree_children').append(e.target);
+            /* const data = {
                 child: from.id,
                 parent: to.id
             };
@@ -64,7 +65,7 @@ const Tree = {
                 error: function(e) {
                     console.log(e);
                 }
-            });
+            }); */
         }
     },
 };
