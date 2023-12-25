@@ -8,7 +8,7 @@ const Tree = {
         document.querySelector('.Nzbiranik_tree_view .Nzbiranik_buttons .Nzbiranik_button-open').addEventListener('click', Tree.open);
         document.querySelector('.Nzbiranik_tree_view .Nzbiranik_buttons .Nzbiranik_button-close').addEventListener('click', Tree.close);
 
-        const dragElements = document.querySelectorAll('.Nzbiranik_tree_view .Nzbiranik_tree_draggable-item');
+        const dragElements = document.querySelectorAll('.Nzbiranik_tree_view .Nzbiranik_tree_draggable_item');
         dragElements.forEach(element => {
             element.addEventListener('dragend', Tree.finish);
             element.addEventListener('dragenter', Tree.dragenter);
@@ -34,7 +34,7 @@ const Tree = {
     },
     finish: function (e) {
         const elemFromCoords = document.elementFromPoint(e.clientX, e.clientY);
-        const parentElem = elemFromCoords.closest('details.Nzbiranik_tree_draggable-item');
+        const parentElem = elemFromCoords.closest('details.Nzbiranik_tree_draggable_item');
         const from = {
             id: e.target.getAttribute('data-id'),
             title: e.target.getAttribute('data-title')
@@ -56,8 +56,9 @@ const Tree = {
             }));
         }
         e.stopImmediatePropagation();
+        parentElem.classList.remove('Nzbiranik_tree_draggable_item_dragging');
     },
     dragenter: function (e) {
-        e.target.classList.add('Nzbiranik_tree_draggable-item_dragging');
+        e.target.classList.add('Nzbiranik_tree_draggable_item_dragging');
     },
 };

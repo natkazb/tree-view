@@ -10,7 +10,7 @@ use yii\helpers\Url;
 ?>
 
 <?php foreach ($items as $item) : ?>
-    <details draggable="true" class="Nzbiranik_tree_draggable-item" data-id="<?= $item[$widget->idField] ?>" data-title="<?= $item[$widget->titleField] ?>"
+    <details draggable="true" class="Nzbiranik_tree_draggable_item" data-id="<?= $item[$widget->idField] ?>" data-title="<?= $item[$widget->titleField] ?>"
              data-properties="<?= json_encode($item) ?>">
         <summary><?= Html::a($item[$widget->titleField], ['view', 'id' => $item[$widget->idField]]); ?></summary>
         <div class="Nzbiranik_tree_children">
