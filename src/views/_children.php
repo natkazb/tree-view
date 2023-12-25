@@ -23,6 +23,6 @@ use yii\helpers\Url;
 <?php endforeach; ?>
 <div class="Nzbiranik_tree_add-child">
     <a href="<?= Url::to([$widget->addChildUrl, 'parent' => $parentId]) ?>">
-        <i>+</i>
+        <img src="../web/add.svg">
     </a>
 </div>
