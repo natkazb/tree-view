@@ -5,19 +5,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
 class Tree {
     selectors = {
-        items: '.Nzbiranik-tree-view .Nzbiranik-tree details'
+        root: '.Nzbiranik-tree-view',
+        items: '.Nzbiranik-tree-view .Nzbiranik-tree details',
+        item: '.Nzbiranik-tree_draggable-item',
+        item_dragging: 'Nzbiranik-tree__draggable-item_dragging',
+        item_moved: 'Nzbiranik-tree_draggable-item_moved',
+        buttons: '.Nzbiranik-tree-view .Nzbiranik__buttons'
     };
 
     constructor() {
         this.open = this.open.bind(this);
-        this.close = this.close.bind(this)
+        this.close = this.close.bind(this);
+        this.startMove = this.close.bind(this);
+        this.stopMove = this.close.bind(this);
+        this.dragenter = this.close.bind(this);
     }
 
     init () {
-        document.querySelector('.Nzbiranik-tree-view .Nzbiranik__buttons .Nzbiranik__button-open').addEventListener('click', this.open);
-        document.querySelector('.Nzbiranik-tree-view .Nzbiranik__buttons .Nzbiranik__button-close').addEventListener('click', this.close);
+        document.querySelector(`${this.selectors.buttons} .Nzbiranik__button-open`).addEventListener('click', this.open);
+        document.querySelector(`${this.selectors.buttons} .Nzbiranik__button-close`).addEventListener('click', this.close);
 
-        const dragElements = document.querySelectorAll('.Nzbiranik-tree-view .Nzbiranik-tree_draggable-item');
+        const dragElements = document.querySelectorAll(`${this.selectors.root} ${this.selectors.item}`);
         dragElements.forEach(element => {
             element.addEventListener('dragstart', this.startMove);
             element.addEventListener('dragend', this.stopMove);
@@ -39,11 +47,15 @@ class Tree {
         }
     }
 
+    startMove (e) {
+        e.target.classList.add(this.selectors.item_moved);
+    }
+
     stopMove (e) {
-        e.target.classList.remove('Nzbiranik-tree_draggable-item_moved');
+        e.target.classList.remove(this.selectors.item_moved);
         const elemFromCoords = document.elementFromPoint(e.clientX, e.clientY);
-        const parentElem = elemFromCoords.closest('details.Nzbiranik-tree_draggable-item');
-        parentElem.classList.remove('Nzbiranik-tree__draggable-item_dragging');
+        const parentElem = elemFromCoords.closest(`details${this.selectors.item}`);
+        parentElem.classList.remove(this.selectors.item_dragging);
         const from = e.target.getAttribute('data-id');
         const to = parentElem.getAttribute('data-id');
         parentElem.querySelector('.Nzbiranik-tree__children').append(e.target);
@@ -51,79 +63,19 @@ class Tree {
             bubbles: true,
             cancelable: true,
             detail: {
-                child: from.id,
-                parent: to.id
+                child: from,
+                parent: to
             }
         }));
         e.stopImmediatePropagation();
     }
 
     dragenter (e) {
-        const draggableElem = e.target.closest('details.Nzbiranik-tree_draggable-item');
-        const dragElements = document.querySelectorAll('.Nzbiranik-tree-view .Nzbiranik-tree_draggable-item');
+        const draggableElem = e.target.closest(`details${this.selectors.item}`);
+        const dragElements = document.querySelectorAll(`${this.selectors.root} ${this.selectors.item}`);
         dragElements.forEach(element => {
-            element.classList.remove('Nzbiranik-tree__draggable-item_dragging');
+            element.classList.remove(this.selectors.item_dragging);
         });
-        draggableElem.classList.add('Nzbiranik-tree__draggable-item_dragging');
-    }
-
-    startMove (e) {
-        e.target.classList.add('Nzbiranik-tree_draggable-item_moved');
+        draggableElem.classList.add(this.selectors.item_dragging);
     }
 }
-
-/*const Tree = {
-    selector: '.Nzbiranik-tree-view .Nzbiranik-tree details',
-    init: function () {
-        document.querySelector('.Nzbiranik-tree-view .Nzbiranik__buttons .Nzbiranik__button-open').addEventListener('click', Tree.open);
-        document.querySelector('.Nzbiranik-tree-view .Nzbiranik__buttons .Nzbiranik__button-close').addEventListener('click', Tree.close);
-
-        const dragElements = document.querySelectorAll('.Nzbiranik-tree-view .Nzbiranik-tree_draggable-item');
-        dragElements.forEach(element => {
-            element.addEventListener('dragstart', Tree.startMove);
-            element.addEventListener('dragend', Tree.stopMove);
-            element.addEventListener('dragenter', Tree.dragenter);
-        });
-    },
-    open: function () {
-        const elements = document.querySelectorAll(Tree.selector);
-        for (let elem of elements) {
-            elem.open = true;
-        }
-    },
-    close: function () {
-        const elements = document.querySelectorAll(Tree.selector);
-        for (let elem of elements) {
-            elem.open = false;
-        }
-    },
-    stopMove: function (e) {
-        e.target.classList.remove('Nzbiranik-tree_draggable-item_moved');
-        const elemFromCoords = document.elementFromPoint(e.clientX, e.clientY);
-        const parentElem = elemFromCoords.closest('details.Nzbiranik-tree_draggable-item');
-        parentElem.classList.remove('Nzbiranik-tree__draggable-item_dragging');
-        const from = e.target.getAttribute('data-id');
-        const to = parentElem.getAttribute('data-id');
-        parentElem.querySelector('.Nzbiranik-tree__children').append(e.target);
-        parentElem.dispatchEvent(new CustomEvent("move-parent", {
-            bubbles: true,
-            cancelable: true,
-            detail: {
-                child: from.id,
-                parent: to.id
-            }
-        }));
-        e.stopImmediatePropagation();
-    },
-    dragenter: function (e) {
-        const draggableElem = e.target.closest('details.Nzbiranik-tree_draggable-item');
-        const dragElements = document.querySelectorAll('.Nzbiranik-tree-view .Nzbiranik-tree_draggable-item');
-        dragElements.forEach(element => {
-            element.classList.remove('Nzbiranik-tree__draggable-item_dragging');
-        });
-        draggableElem.classList.add('Nzbiranik-tree__draggable-item_dragging');
-    },
-    startMove: function (e) {
-        e.target.classList.add('Nzbiranik-tree_draggable-item_moved');
-    },
-};*/
