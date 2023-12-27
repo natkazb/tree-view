@@ -1,13 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
-    //Tree.init();
-    const t = new Tree2();
+    const t = new Tree();
     t.init();
 });
 
-class Tree2 {
+class Tree {
     selectors = {
         items: '.Nzbiranik-tree-view .Nzbiranik-tree details'
     };
+
+    constructor() {
+        this.open = this.open.bind(this);
+        this.close = this.close.bind(this)
+    }
 
     init () {
         document.querySelector('.Nzbiranik-tree-view .Nzbiranik__buttons .Nzbiranik__button-open').addEventListener('click', this.open);
@@ -22,16 +26,14 @@ class Tree2 {
     }
 
     open () {
-        console.log(Tree2.selectors.items);
-        onsole.log(this.selectors.items);
-        const elements = document.querySelectorAll(Tree2.selectors.items);
+        const elements = document.querySelectorAll(this.selectors.items);
         for (let elem of elements) {
             elem.open = true;
         }
     }
 
     close () {
-        const elements = document.querySelectorAll(Tree2.selectors.items);
+        const elements = document.querySelectorAll(this.selectors.items);
         for (let elem of elements) {
             elem.open = false;
         }
