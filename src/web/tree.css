@@ -1,20 +1,20 @@
-.Nzbiranik_tree_view .Nzbiranik_buttons {
+.Nzbiranik-tree-view .Nzbiranik__buttons {
     padding: 5px 0;
 }
 
-.Nzbiranik_tree_view .Nzbiranik_tree_children{
+.Nzbiranik-tree-view .Nzbiranik-tree__children{
     padding-left: 20px;
 }
 
-.Nzbiranik_tree details{
+.Nzbiranik-tree details{
     padding: 3px;
 }
 
-.Nzbiranik_tree summary{
+.Nzbiranik-tree summary{
     position: relative;
 }
 
-.Nzbiranik_tree details > summary::after{
+.Nzbiranik-tree details > summary::after{
     content: url("up.svg");
     padding: 0 5px;
     position: absolute;
@@ -23,14 +23,18 @@
     cursor: pointer;
 }
 
-.Nzbiranik_tree details[open] > summary::after{
+.Nzbiranik-tree details[open] > summary::after{
     content: url("down.svg");
 }
 
-.Nzbiranik_tree .Nzbiranik_tree_add-child {
+.Nzbiranik-tree .Nzbiranik-tree__add-child {
     padding: 0 3px;
 }
 
-.Nzbiranik_tree .Nzbiranik_tree_draggable_item_dragging {
+.Nzbiranik-tree .Nzbiranik-tree__draggable-item_dragging {
     border: 1px solid darkorange;
+}
+
+.Nzbiranik-tree .Nzbiranik-tree_draggable-item_moved {
+    border: 1px dotted #000;
 }
