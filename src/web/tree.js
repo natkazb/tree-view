@@ -5,12 +5,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 class Tree2 {
-    selector = '.Nzbiranik-tree-view .Nzbiranik-tree details';
+    selectors = {
+        items: '.Nzbiranik-tree-view .Nzbiranik-tree details'
+    };
 
     init () {
-        console.log(document.querySelector('.Nzbiranik-tree-view .Nzbiranik__buttons .Nzbiranik__button-open'));
-        document.querySelector('.Nzbiranik-tree-view .Nzbiranik__buttons .Nzbiranik__button-open').addEventListener('click', Tree2.open);
-        document.querySelector('.Nzbiranik-tree-view .Nzbiranik__buttons .Nzbiranik__button-close').addEventListener('click', Tree2.close);
+        document.querySelector('.Nzbiranik-tree-view .Nzbiranik__buttons .Nzbiranik__button-open').addEventListener('click', this.open);
+        document.querySelector('.Nzbiranik-tree-view .Nzbiranik__buttons .Nzbiranik__button-close').addEventListener('click', this.close);
 
         const dragElements = document.querySelectorAll('.Nzbiranik-tree-view .Nzbiranik-tree_draggable-item');
         dragElements.forEach(element => {
@@ -21,14 +22,16 @@ class Tree2 {
     }
 
     open () {
-        const elements = document.querySelectorAll(this.selector);
+        console.log(Tree2.selectors.items);
+        onsole.log(this.selectors.items);
+        const elements = document.querySelectorAll(Tree2.selectors.items);
         for (let elem of elements) {
             elem.open = true;
         }
     }
 
     close () {
-        const elements = document.querySelectorAll(this.selector);
+        const elements = document.querySelectorAll(Tree2.selectors.items);
         for (let elem of elements) {
             elem.open = false;
         }
