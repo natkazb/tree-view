@@ -12,8 +12,8 @@ const Tree = {
         dragElements.forEach(element => {
             element.addEventListener('dragstart', Tree.startMove);
             element.addEventListener('dragend', Tree.stopMove);
-            element.addEventListener('dragenter', Tree.dragenter);
-            element.addEventListener('dragleave', Tree.dragleave);
+            //element.addEventListener('dragenter', Tree.dragenter);
+            element.addEventListener('dragover', Tree.dragover);
 
             /*element.addEventListener('dragover', (event) => {
                 console.log('dragover');
@@ -35,8 +35,6 @@ const Tree = {
         }
     },
     stopMove: function (e) {
-        console.log('dragend');
-        console.log(e.target);
         e.target.classList.remove('Nzbiranik-tree_draggable-item_moved');
         const elemFromCoords = document.elementFromPoint(e.clientX, e.clientY);
         const parentElem = elemFromCoords.closest('details.Nzbiranik-tree_draggable_item');
@@ -69,11 +67,11 @@ const Tree = {
         console.log(draggableElem);
         draggableElem.classList.add('Nzbiranik-tree__draggable-item_dragging');
     },
-    dragleave: function (e) {
+    dragover: function (e) {
         const draggableElem = e.target.closest('details.Nzbiranik-tree_draggable_item');
-        console.log('dragleave');
+        console.log('dragover');
         console.log(draggableElem);
-        draggableElem.classList.remove('Nzbiranik-tree__draggable-item_dragging');
+        draggableElem.classList.add('Nzbiranik-tree__draggable-item_dragging');
     },
     startMove: function (e) {
         e.target.classList.add('Nzbiranik-tree_draggable-item_moved');
