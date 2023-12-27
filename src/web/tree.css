@@ -32,7 +32,7 @@
 }
 
 .Nzbiranik-tree .Nzbiranik-tree__draggable-item_dragging {
-    border: 1px solid darkorange;
+    border: 1px solid #000;
 }
 
 .Nzbiranik-tree .Nzbiranik-tree_draggable-item_moved {

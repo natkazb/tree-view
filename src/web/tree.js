@@ -12,8 +12,7 @@ const Tree = {
         dragElements.forEach(element => {
             element.addEventListener('dragstart', Tree.startMove);
             element.addEventListener('dragend', Tree.stopMove);
-            //element.addEventListener('dragenter', Tree.dragenter);
-            element.addEventListener('dragover', Tree.dragover);
+            element.addEventListener('dragenter', Tree.dragenter);
 
             /*element.addEventListener('dragover', (event) => {
                 console.log('dragover');
@@ -63,13 +62,11 @@ const Tree = {
     },
     dragenter: function (e) {
         const draggableElem = e.target.closest('details.Nzbiranik-tree_draggable_item');
+        const dragElements = document.querySelectorAll('.Nzbiranik-tree-view .Nzbiranik-tree_draggable_item');
+        dragElements.forEach(element => {
+            element.classList.remove('Nzbiranik-tree__draggable-item_dragging');
+        });
         console.log('dragenter');
-        console.log(draggableElem);
-        draggableElem.classList.add('Nzbiranik-tree__draggable-item_dragging');
-    },
-    dragover: function (e) {
-        const draggableElem = e.target.closest('details.Nzbiranik-tree_draggable_item');
-        console.log('dragover');
         console.log(draggableElem);
         draggableElem.classList.add('Nzbiranik-tree__draggable-item_dragging');
     },
