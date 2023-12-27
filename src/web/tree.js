@@ -16,9 +16,9 @@ class Tree {
     constructor() {
         this.open = this.open.bind(this);
         this.close = this.close.bind(this);
-        this.startMove = this.close.bind(this);
-        this.stopMove = this.close.bind(this);
-        this.dragenter = this.close.bind(this);
+        this.startMove = this.startMove.bind(this);
+        this.stopMove = this.stopMove.bind(this);
+        this.dragenter = this.dragenter.bind(this);
     }
 
     init () {
