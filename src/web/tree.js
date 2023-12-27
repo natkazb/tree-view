@@ -58,15 +58,17 @@ class Tree {
         parentElem.classList.remove(this.selectors.item_dragging);
         const from = e.target.getAttribute('data-id');
         const to = parentElem.getAttribute('data-id');
-        parentElem.querySelector('.Nzbiranik-tree__children').append(e.target);
-        parentElem.dispatchEvent(new CustomEvent("move-parent", {
-            bubbles: true,
-            cancelable: true,
-            detail: {
-                child: from,
-                parent: to
-            }
-        }));
+        if (from !== to) {
+            parentElem.querySelector('.Nzbiranik-tree__children').append(e.target);
+            parentElem.dispatchEvent(new CustomEvent("move-parent", {
+                bubbles: true,
+                cancelable: true,
+                detail: {
+                    child: from,
+                    parent: to
+                }
+            }));
+        }
         e.stopImmediatePropagation();
     }
 
