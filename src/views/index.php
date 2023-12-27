@@ -7,8 +7,8 @@ use Nzbiranik\TreeView\Tree;
 ?>
 <div class="Nzbiranik-tree-view">
     <div class="Nzbiranik__buttons">
-        <button class="Nzbiranik_button-open"><?= Yii::t('backend', 'Развернуть все') ?></button>
-        <button class="Nzbiranik_button-close"><?= Yii::t('backend', 'Свернуть все') ?></button>
+        <button class="Nzbiranik__button-open"><?= Yii::t('backend', 'Развернуть все') ?></button>
+        <button class="Nzbiranik__button-close"><?= Yii::t('backend', 'Свернуть все') ?></button>
     </div>
     <div class="Nzbiranik-tree">
         <?php echo $widget->render('_children', [

@@ -8,8 +8,8 @@ class Tree2 {
     selector = '.Nzbiranik-tree-view .Nzbiranik-tree details';
 
     init () {
-        document.querySelector('.Nzbiranik-tree-view .Nzbiranik__buttons .Nzbiranik_button-open').addEventListener('click', this.open);
-        document.querySelector('.Nzbiranik-tree-view .Nzbiranik__buttons .Nzbiranik_button-close').addEventListener('click', this.close);
+        document.querySelector('.Nzbiranik-tree-view .Nzbiranik__buttons .Nzbiranik__button-open').addEventListener('click', this.open);
+        document.querySelector('.Nzbiranik-tree-view .Nzbiranik__buttons .Nzbiranik__button-close').addEventListener('click', this.close);
 
         const dragElements = document.querySelectorAll('.Nzbiranik-tree-view .Nzbiranik-tree_draggable-item');
         dragElements.forEach(element => {
@@ -69,8 +69,8 @@ class Tree2 {
 /*const Tree = {
     selector: '.Nzbiranik-tree-view .Nzbiranik-tree details',
     init: function () {
-        document.querySelector('.Nzbiranik-tree-view .Nzbiranik__buttons .Nzbiranik_button-open').addEventListener('click', Tree.open);
-        document.querySelector('.Nzbiranik-tree-view .Nzbiranik__buttons .Nzbiranik_button-close').addEventListener('click', Tree.close);
+        document.querySelector('.Nzbiranik-tree-view .Nzbiranik__buttons .Nzbiranik__button-open').addEventListener('click', Tree.open);
+        document.querySelector('.Nzbiranik-tree-view .Nzbiranik__buttons .Nzbiranik__button-close').addEventListener('click', Tree.close);
 
         const dragElements = document.querySelectorAll('.Nzbiranik-tree-view .Nzbiranik-tree_draggable-item');
         dragElements.forEach(element => {

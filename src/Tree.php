@@ -12,7 +12,6 @@ class Tree extends Widget
     public string $titleField = 'title';
     public string $addChildUrl;
     public ?Closure $functionItems;
-    public string $functionOnDragEnd;
 
     public function getItems(?int $parent = null): array
     {
