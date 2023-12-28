@@ -108,7 +108,7 @@ class Tree {
                 id: item.getAttribute('data-id')
             }
         }));
-        e.stopImmediatePropagation();
+        e.preventDefault();
     }
 
     moveUp (e) {
@@ -122,6 +122,6 @@ class Tree {
                 id: item.getAttribute('data-id')
             }
         }));
-        e.stopImmediatePropagation();
+        e.preventDefault();
     }
 }
