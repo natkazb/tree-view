@@ -17,8 +17,8 @@ use yii\helpers\Url;
             <?php else : ?>
                 <?php echo $item[$widget->titleField]; ?>
             <?php endif; ?>
-            <img src="<?php echo __DIR__ . '/../web/move-down.svg' ?>" alt="move-down"/>
-            <img src="<?php echo __DIR__ . '/../web/move-up.svg' ?>" alt="move-up"/>
+            <img class="Nzbiranik-tree__button-move-down" src="<?php echo __DIR__ . '/../web/move-down.svg' ?>" alt="move-down" data-id="<?php echo $item[$widget->idField] ?>"/>
+            <img class="Nzbiranik-tree__button-move-up" src="<?php echo __DIR__ . '/../web/move-up.svg' ?>" alt="move-up" data-id="<?php echo $item[$widget->idField] ?>"/>
         </summary>
         <div class="Nzbiranik-tree__children">
             <?php echo $widget->render('_children', [

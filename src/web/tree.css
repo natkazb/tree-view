@@ -38,3 +38,11 @@
 .Nzbiranik-tree .Nzbiranik-tree_draggable-item_moved {
     border: 1px dotted #000;
 }
+
+.Nzbiranik-tree .Nzbiranik-tree__button-move-down {
+    cursor: pointer;
+}
+
+.Nzbiranik-tree .Nzbiranik-tree__button-move-up {
+    cursor: pointer;
+}

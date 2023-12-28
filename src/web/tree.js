@@ -10,7 +10,9 @@ class Tree {
         item: '.Nzbiranik-tree_draggable-item',
         item_dragging: 'Nzbiranik-tree__draggable-item_dragging',
         item_moved: 'Nzbiranik-tree_draggable-item_moved',
-        buttons: '.Nzbiranik-tree-view .Nzbiranik__buttons'
+        buttons: '.Nzbiranik-tree-view .Nzbiranik__buttons',
+        button_move_down: '.Nzbiranik-tree__button-move-down',
+        button_move_up: '.Nzbiranik-tree__button-move-up'
     };
 
     constructor() {
@@ -30,6 +32,14 @@ class Tree {
             element.addEventListener('dragstart', this.startMove);
             element.addEventListener('dragend', this.stopMove);
             element.addEventListener('dragenter', this.dragenter);
+        });
+        const moveDownButtons = document.querySelectorAll(`${this.selectors.root} ${this.selectors.button_move_down}`);
+        moveDownButtons.forEach(element => {
+            element.addEventListener('click', this.moveDown);
+        });
+        const moveUpButtons = document.querySelectorAll(`${this.selectors.root} ${this.selectors.button_move_up}`);
+        moveUpButtons.forEach(element => {
+            element.addEventListener('click', this.moveUp);
         });
     }
 
@@ -81,5 +91,25 @@ class Tree {
             element.classList.remove(this.selectors.item_dragging);
         });
         draggableElem.classList.add(this.selectors.item_dragging);
+    }
+
+    moveDown (e) {
+        e.target.dispatchEvent(new CustomEvent("move-down", {
+            bubbles: true,
+            cancelable: true,
+            detail: {
+                id: e.target.getAttribute('data-id')
+            }
+        }));
+    }
+
+    moveUp (e) {
+        e.target.dispatchEvent(new CustomEvent("move-up", {
+            bubbles: true,
+            cancelable: true,
+            detail: {
+                id: e.target.getAttribute('data-id')
+            }
+        }));
     }
 }
