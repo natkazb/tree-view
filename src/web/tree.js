@@ -94,21 +94,27 @@ class Tree {
     }
 
     moveDown (e) {
-        e.target.dispatchEvent(new CustomEvent("move-down", {
+        const item = e.target.closest(`details${this.selectors.item}`);
+        const sibling = item.nextSibling;
+        sibling?.after(item);
+        sibling?.dispatchEvent(new CustomEvent("move-down", {
             bubbles: true,
             cancelable: true,
             detail: {
-                id: e.target.getAttribute('data-id')
+                id: item.getAttribute('data-id')
             }
         }));
     }
 
     moveUp (e) {
-        e.target.dispatchEvent(new CustomEvent("move-up", {
+        const item = e.target.closest(`details${this.selectors.item}`);
+        const sibling = item.previousSibling;
+        sibling?.before(item);
+        sibling?.dispatchEvent(new CustomEvent("move-up", {
             bubbles: true,
             cancelable: true,
             detail: {
-                id: e.target.getAttribute('data-id')
+                id: item.getAttribute('data-id')
             }
         }));
     }
