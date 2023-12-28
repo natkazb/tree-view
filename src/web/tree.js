@@ -56,18 +56,20 @@ class Tree {
         const elemFromCoords = document.elementFromPoint(e.clientX, e.clientY);
         const parentElem = elemFromCoords.closest(`details${this.selectors.item}`);
         parentElem.classList.remove(this.selectors.item_dragging);
-        const from = e.target.getAttribute('data-id');
-        const to = parentElem.getAttribute('data-id');
-        if (from !== to) {
-            parentElem.querySelector('.Nzbiranik-tree__children').append(e.target);
-            parentElem.dispatchEvent(new CustomEvent("move-parent", {
-                bubbles: true,
-                cancelable: true,
-                detail: {
-                    child: from,
-                    parent: to
-                }
-            }));
+        if (e.target.contains(parentElem) === false) { // родителя в потомка не переносим
+            const from = e.target.getAttribute('data-id');
+            const to = parentElem.getAttribute('data-id');
+            if (from !== to) {
+                parentElem.querySelector('.Nzbiranik-tree__children').append(e.target);
+                parentElem.dispatchEvent(new CustomEvent("move-parent", {
+                    bubbles: true,
+                    cancelable: true,
+                    detail: {
+                        child: from,
+                        parent: to
+                    }
+                }));
+            }
         }
         e.stopImmediatePropagation();
     }
