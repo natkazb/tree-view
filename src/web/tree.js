@@ -21,6 +21,8 @@ class Tree {
         this.startMove = this.startMove.bind(this);
         this.stopMove = this.stopMove.bind(this);
         this.dragenter = this.dragenter.bind(this);
+        this.moveDown = this.moveDown.bind(this);
+        this.moveUp = this.moveUp.bind(this);
     }
 
     init () {
@@ -33,10 +35,13 @@ class Tree {
             element.addEventListener('dragend', this.stopMove);
             element.addEventListener('dragenter', this.dragenter);
         });
+
         const moveDownButtons = document.querySelectorAll(`${this.selectors.root} ${this.selectors.button_move_down}`);
         moveDownButtons.forEach(element => {
+            console.log('moveDown');
             element.addEventListener('click', this.moveDown);
         });
+
         const moveUpButtons = document.querySelectorAll(`${this.selectors.root} ${this.selectors.button_move_up}`);
         moveUpButtons.forEach(element => {
             element.addEventListener('click', this.moveUp);
@@ -94,7 +99,9 @@ class Tree {
     }
 
     moveDown (e) {
+        console.log('moveDown');
         const item = e.target.closest(`details${this.selectors.item}`);
+        console.log(item);
         const sibling = item.nextSibling;
         sibling?.after(item);
         sibling?.dispatchEvent(new CustomEvent("move-down", {
@@ -107,7 +114,9 @@ class Tree {
     }
 
     moveUp (e) {
+        console.log('moveUp');
         const item = e.target.closest(`details${this.selectors.item}`);
+        console.log(item);
         const sibling = item.previousSibling;
         sibling?.before(item);
         sibling?.dispatchEvent(new CustomEvent("move-up", {
