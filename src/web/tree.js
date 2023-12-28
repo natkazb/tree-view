@@ -38,7 +38,6 @@ class Tree {
 
         const moveDownButtons = document.querySelectorAll(`${this.selectors.root} ${this.selectors.button_move_down}`);
         moveDownButtons.forEach(element => {
-            console.log('moveDown');
             element.addEventListener('click', this.moveDown);
         });
 
@@ -99,9 +98,7 @@ class Tree {
     }
 
     moveDown (e) {
-        console.log('moveDown');
         const item = e.target.closest(`details${this.selectors.item}`);
-        console.log(item);
         const sibling = item.nextSibling;
         sibling?.after(item);
         sibling?.dispatchEvent(new CustomEvent("move-down", {
@@ -111,12 +108,11 @@ class Tree {
                 id: item.getAttribute('data-id')
             }
         }));
+        e.stopImmediatePropagation();
     }
 
     moveUp (e) {
-        console.log('moveUp');
         const item = e.target.closest(`details${this.selectors.item}`);
-        console.log(item);
         const sibling = item.previousSibling;
         sibling?.before(item);
         sibling?.dispatchEvent(new CustomEvent("move-up", {
@@ -126,5 +122,6 @@ class Tree {
                 id: item.getAttribute('data-id')
             }
         }));
+        e.stopImmediatePropagation();
     }
 }
