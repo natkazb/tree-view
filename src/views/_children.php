@@ -17,8 +17,8 @@ use yii\helpers\Url;
             <?php else : ?>
                 <?php echo $item[$widget->titleField]; ?>
             <?php endif; ?>
-            <img class="Nzbiranik-tree__button-move-down" src="<?php echo __DIR__ . '/../web/move-down.svg' ?>" alt="move-down" data-id="<?php echo $item[$widget->idField] ?>"/>
-            <img class="Nzbiranik-tree__button-move-up" src="<?php echo __DIR__ . '/../web/move-up.svg' ?>" alt="move-up" data-id="<?php echo $item[$widget->idField] ?>"/>
+            <img class="Nzbiranik-tree__button-move-down" src="../web/move-down.svg" alt="move-down" data-id="<?php echo $item[$widget->idField] ?>"/>
+            <img class="Nzbiranik-tree__button-move-up" src="../web/move-up.svg" alt="move-up" data-id="<?php echo $item[$widget->idField] ?>"/>
         </summary>
         <div class="Nzbiranik-tree__children">
             <?php echo $widget->render('_children', [
@@ -32,7 +32,7 @@ use yii\helpers\Url;
 <?php if (!empty($widget->addChildUrl)) : ?>
     <div class="Nzbiranik-tree__add-child">
         <a href="<?php echo Url::to([$widget->addChildUrl, 'parent' => $parentId]) ?>">
-            <img src="<?php echo __DIR__ . '/../web/add.svg' ?>" alt="add"/>
+            <img src="../web/add.svg" alt="add"/>
         </a>
     </div>
 <?php endif; ?>
