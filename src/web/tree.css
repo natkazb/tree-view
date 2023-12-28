@@ -12,6 +12,7 @@
 
 .Nzbiranik-tree summary{
     position: relative;
+    display: flex;
 }
 
 .Nzbiranik-tree details > summary::after{
