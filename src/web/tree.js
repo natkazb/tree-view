@@ -133,8 +133,8 @@ class Tree {
 
     summaryClick (e) {
         const elem = e.target.closest(`.Nzbiranik-tree__button-move`);
-        console.log(elem);
         if (elem) {
+            console.log('preventDefault');
             e.preventDefault();
         }
     }
