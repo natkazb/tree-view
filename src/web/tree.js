@@ -103,10 +103,7 @@ class Tree {
     }
 
     moveDown (e) {
-        console.log('moveDown');
-        console.log(e.target);
         const item = e.target.closest(`details${this.selectors.item}`);
-        console.log(item);
         const sibling = item.nextSibling;
         sibling?.after(item);
         sibling?.dispatchEvent(new CustomEvent("move-down", {
@@ -116,15 +113,11 @@ class Tree {
                 id: item.getAttribute('data-id')
             }
         }));
-        console.log('end moveDown');
-        e.stopPropagation();
+        e.stopImmediatePropagation();
     }
 
     moveUp (e) {
-        console.log('moveUp');
-        console.log(e.target);
         const item = e.target.closest(`details${this.selectors.item}`);
-        console.log(item);
         const sibling = item.previousSibling;
         sibling?.before(item);
         sibling?.dispatchEvent(new CustomEvent("move-up", {
@@ -134,12 +127,11 @@ class Tree {
                 id: item.getAttribute('data-id')
             }
         }));
-        console.log('end moveUp');
-        e.stopPropagation();
+        e.stopImmediatePropagation();
     }
 
     click (e) {
-        console.log('summary click');
-        console.log(e.target);
+        //console.log('summary click');
+        //console.log(e.target);
     }
 }
