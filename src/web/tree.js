@@ -71,7 +71,7 @@ class Tree {
     }
 
     stopMove (e) {
-        e.stopPropagation();
+        console.log('stopMove');
         e.target.classList.remove(this.selectors.item_moved);
         const elemFromCoords = document.elementFromPoint(e.clientX, e.clientY);
         const parentElem = elemFromCoords.closest(`details${this.selectors.item}`);
@@ -91,6 +91,7 @@ class Tree {
                 }));
             }
         }
+        e.stopPropagation();
     }
 
     dragenter (e) {
@@ -105,9 +106,9 @@ class Tree {
     moveDown (e) {
         console.log('moveDown');
         console.log(e.target);
-        e.stopPropagation();
         const item = e.target.closest(`details${this.selectors.item}`);
         const sibling = item.nextSibling;
+        console.log(sibling);
         sibling?.after(item);
         sibling?.dispatchEvent(new CustomEvent("move-down", {
             bubbles: true,
@@ -122,9 +123,9 @@ class Tree {
     moveUp (e) {
         console.log('moveUp');
         console.log(e.target);
-        e.stopPropagation();
         const item = e.target.closest(`details${this.selectors.item}`);
         const sibling = item.previousSibling;
+        console.log(sibling);
         sibling?.before(item);
         sibling?.dispatchEvent(new CustomEvent("move-up", {
             bubbles: true,
