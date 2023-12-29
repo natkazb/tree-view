@@ -12,6 +12,7 @@
 
 .Nzbiranik-tree summary{
     position: relative;
+    display: flex;
 }
 
 .Nzbiranik-tree details > summary::after{
@@ -46,8 +47,4 @@
 
 .Nzbiranik-tree .Nzbiranik-tree__button-move-up {
     cursor: pointer;
-}
-
-.Nzbiranik-tree .Nzbiranik-tree_item-title_inline {
-    display: flex;
 }

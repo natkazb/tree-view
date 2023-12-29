@@ -104,6 +104,7 @@ class Tree {
 
     moveDown (e) {
         console.log('moveDown');
+        console.log(e.target);
         e.stopPropagation();
         const item = e.target.closest(`details${this.selectors.item}`);
         const sibling = item.nextSibling;
@@ -115,10 +116,12 @@ class Tree {
                 id: item.getAttribute('data-id')
             }
         }));
+        console.log('end moveDown');
     }
 
     moveUp (e) {
         console.log('moveUp');
+        console.log(e.target);
         e.stopPropagation();
         const item = e.target.closest(`details${this.selectors.item}`);
         const sibling = item.previousSibling;
@@ -130,6 +133,7 @@ class Tree {
                 id: item.getAttribute('data-id')
             }
         }));
+        console.log('end moveUp');
     }
 
     click (e) {
