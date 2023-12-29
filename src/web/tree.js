@@ -66,6 +66,7 @@ class Tree {
     }
 
     stopMove (e) {
+        e.stopPropagation();
         e.target.classList.remove(this.selectors.item_moved);
         const elemFromCoords = document.elementFromPoint(e.clientX, e.clientY);
         const parentElem = elemFromCoords.closest(`details${this.selectors.item}`);
@@ -85,7 +86,6 @@ class Tree {
                 }));
             }
         }
-        e.stopImmediatePropagation();
     }
 
     dragenter (e) {
@@ -98,6 +98,7 @@ class Tree {
     }
 
     moveDown (e) {
+        e.stopPropagation();
         const item = e.target.closest(`details${this.selectors.item}`);
         const sibling = item.nextSibling;
         sibling?.after(item);
@@ -108,10 +109,10 @@ class Tree {
                 id: item.getAttribute('data-id')
             }
         }));
-        e.preventDefault();
     }
 
     moveUp (e) {
+        e.stopPropagation();
         const item = e.target.closest(`details${this.selectors.item}`);
         const sibling = item.previousSibling;
         sibling?.before(item);
@@ -122,6 +123,5 @@ class Tree {
                 id: item.getAttribute('data-id')
             }
         }));
-        e.preventDefault();
     }
 }
