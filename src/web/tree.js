@@ -39,7 +39,7 @@ class Tree {
 
         const summaries = document.querySelectorAll(`${this.selectors.root} ${this.selectors.item} summary`);
         summaries.forEach(element => {
-            element.addEventListener('click', this.click);
+            element.addEventListener('click', this.summaryClick);
         });
 
         const moveDownButtons = document.querySelectorAll(`${this.selectors.root} ${this.selectors.button_move_down}`);
@@ -106,7 +106,7 @@ class Tree {
     moveDown (e) {
         const item = e.target.closest(`details${this.selectors.item}`);
         const sibling = item.nextSibling;
-        console.log(sibling.classList);
+        console.log(sibling.parentElement);
         if (sibling?.classList.contains(this.selectors.class_add_button) === false) {
             sibling?.after(item);
             sibling?.dispatchEvent(new CustomEvent("move-down", {
@@ -132,7 +132,7 @@ class Tree {
         }));
     }
 
-    click (e) {
+    summaryClick (e) {
         const elem = e.target.closest(`.Nzbiranik-tree__button-move`);
         if (elem) {
             e.preventDefault();
