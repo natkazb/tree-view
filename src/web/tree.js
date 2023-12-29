@@ -12,7 +12,8 @@ class Tree {
         item_moved: 'Nzbiranik-tree_draggable-item_moved',
         buttons: '.Nzbiranik-tree-view .Nzbiranik__buttons',
         button_move_down: '.Nzbiranik-tree__button-move-down',
-        button_move_up: '.Nzbiranik-tree__button-move-up'
+        button_move_up: '.Nzbiranik-tree__button-move-up',
+        class_add_button: 'Nzbiranik-tree__add-child'
     };
 
     constructor() {
@@ -105,14 +106,16 @@ class Tree {
     moveDown (e) {
         const item = e.target.closest(`details${this.selectors.item}`);
         const sibling = item.nextSibling;
-        sibling?.after(item);
-        sibling?.dispatchEvent(new CustomEvent("move-down", {
-            bubbles: true,
-            cancelable: true,
-            detail: {
-                id: item.getAttribute('data-id')
-            }
-        }));
+        if (sibling?.classList.contains(this.selectors.class_add_button) === false) {
+            sibling?.after(item);
+            sibling?.dispatchEvent(new CustomEvent("move-down", {
+                bubbles: true,
+                cancelable: true,
+                detail: {
+                    id: item.getAttribute('data-id')
+                }
+            }));
+        }
     }
 
     moveUp (e) {
@@ -130,7 +133,6 @@ class Tree {
 
     click (e) {
         e.stopPropagation();
-        //console.log('summary click');
-        //console.log(e.target);
+        e.preventDefault();
     }
 }
