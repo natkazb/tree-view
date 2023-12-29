@@ -105,8 +105,7 @@ class Tree {
 
     moveDown (e) {
         const item = e.target.closest(`details${this.selectors.item}`);
-        const sibling = item.nextSibling;
-        console.log(sibling);
+        const sibling = item.nextElementSibling;
         if (sibling?.classList.contains(this.selectors.class_add_button) === false) {
             sibling?.after(item);
             sibling?.dispatchEvent(new CustomEvent("move-down", {
@@ -121,7 +120,7 @@ class Tree {
 
     moveUp (e) {
         const item = e.target.closest(`details${this.selectors.item}`);
-        const sibling = item.previousSibling;
+        const sibling = item.previousElementSibling;
         sibling?.before(item);
         sibling?.dispatchEvent(new CustomEvent("move-up", {
             bubbles: true,
