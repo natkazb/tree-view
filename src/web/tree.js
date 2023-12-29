@@ -37,10 +37,10 @@ class Tree {
             element.addEventListener('dragenter', this.dragenter);
         });
 
-        /* const summaries = document.querySelectorAll(`${this.selectors.root} ${this.selectors.item} summary`);
+        /*const summaries = document.querySelectorAll(`${this.selectors.root} ${this.selectors.item} summary`);
         summaries.forEach(element => {
             element.addEventListener('click', this.summaryClick);
-        }); */
+        });*/
 
         const moveDownButtons = document.querySelectorAll(`${this.selectors.root} ${this.selectors.button_move_down}`);
         moveDownButtons.forEach(element => {
@@ -116,6 +116,7 @@ class Tree {
                 }
             }));
         }
+        e.stopImmediatePropagation();
     }
 
     moveUp (e) {
@@ -129,6 +130,7 @@ class Tree {
                 id: item.getAttribute('data-id')
             }
         }));
+        e.stopImmediatePropagation();
     }
 
     summaryClick (e) {
