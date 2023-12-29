@@ -34,6 +34,7 @@ class Tree {
             element.addEventListener('dragstart', this.startMove);
             element.addEventListener('dragend', this.stopMove);
             element.addEventListener('dragenter', this.dragenter);
+            element.addEventListener('click', this.click);
         });
 
         const moveDownButtons = document.querySelectorAll(`${this.selectors.root} ${this.selectors.button_move_down}`);
@@ -98,6 +99,7 @@ class Tree {
     }
 
     moveDown (e) {
+        console.log('moveDown');
         e.stopPropagation();
         const item = e.target.closest(`details${this.selectors.item}`);
         const sibling = item.nextSibling;
@@ -112,6 +114,7 @@ class Tree {
     }
 
     moveUp (e) {
+        console.log('moveUp');
         e.stopPropagation();
         const item = e.target.closest(`details${this.selectors.item}`);
         const sibling = item.previousSibling;
@@ -123,5 +126,10 @@ class Tree {
                 id: item.getAttribute('data-id')
             }
         }));
+    }
+
+    click (e) {
+        console.log('details click');
+        console.log(e.target);
     }
 }
