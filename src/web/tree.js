@@ -71,7 +71,6 @@ class Tree {
     }
 
     stopMove (e) {
-        console.log('stopMove');
         e.target.classList.remove(this.selectors.item_moved);
         const elemFromCoords = document.elementFromPoint(e.clientX, e.clientY);
         const parentElem = elemFromCoords.closest(`details${this.selectors.item}`);
@@ -107,8 +106,8 @@ class Tree {
         console.log('moveDown');
         console.log(e.target);
         const item = e.target.closest(`details${this.selectors.item}`);
+        console.log(item);
         const sibling = item.nextSibling;
-        console.log(sibling);
         sibling?.after(item);
         sibling?.dispatchEvent(new CustomEvent("move-down", {
             bubbles: true,
@@ -118,14 +117,15 @@ class Tree {
             }
         }));
         console.log('end moveDown');
+        e.stopPropagation();
     }
 
     moveUp (e) {
         console.log('moveUp');
         console.log(e.target);
         const item = e.target.closest(`details${this.selectors.item}`);
+        console.log(item);
         const sibling = item.previousSibling;
-        console.log(sibling);
         sibling?.before(item);
         sibling?.dispatchEvent(new CustomEvent("move-up", {
             bubbles: true,
@@ -135,6 +135,7 @@ class Tree {
             }
         }));
         console.log('end moveUp');
+        e.stopPropagation();
     }
 
     click (e) {
