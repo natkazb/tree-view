@@ -106,7 +106,7 @@ class Tree {
     moveDown (e) {
         const item = e.target.closest(`details${this.selectors.item}`);
         const sibling = item.nextSibling;
-        console.log(sibling.parentElement);
+        console.log(sibling);
         if (sibling?.classList.contains(this.selectors.class_add_button) === false) {
             sibling?.after(item);
             sibling?.dispatchEvent(new CustomEvent("move-down", {
