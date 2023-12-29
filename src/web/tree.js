@@ -34,6 +34,10 @@ class Tree {
             element.addEventListener('dragstart', this.startMove);
             element.addEventListener('dragend', this.stopMove);
             element.addEventListener('dragenter', this.dragenter);
+        });
+
+        const summaries = document.querySelectorAll(`${this.selectors.root} ${this.selectors.item} summary`);
+        summaries.forEach(element => {
             element.addEventListener('click', this.click);
         });
 
@@ -129,7 +133,7 @@ class Tree {
     }
 
     click (e) {
-        console.log('details click');
+        console.log('summary click');
         console.log(e.target);
     }
 }
