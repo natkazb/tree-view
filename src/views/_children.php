@@ -11,14 +11,14 @@ use yii\helpers\Url;
 
 <?php foreach ($items as $item) : ?>
     <details draggable="true" class="Nzbiranik-tree_draggable-item" data-id="<?php echo $item[$widget->idField] ?>">
-        <summary>
-            <div>
+        <div class="Nzbiranik-tree_item-title_inline">
+            <summary>
                 <?php if (!empty($widget->viewUrl)) : ?>
                     <?php echo Html::a($item[$widget->titleField], [$widget->viewUrl, 'id' => $item[$widget->idField]]); ?>
                 <?php else : ?>
                     <?php echo $item[$widget->titleField]; ?>
                 <?php endif; ?>
-            </div>
+            </summary>
             <div class="Nzbiranik-tree__button-move-down">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.01 10.72C2.94232 11.9307 3.31826 13.1246 4.06743 14.0781C4.81661 15.0316 5.88765 15.6793 7.08 15.9L6.29 15.11C6.19742 15.0174 6.12398 14.9075 6.07388 14.7865C6.02377 14.6656 5.99798 14.5359 5.99798 14.405C5.99798 14.1406 6.10303 13.887 6.29 13.7C6.47698 13.513 6.73058 13.408 6.995 13.408C7.25943 13.408 7.51303 13.513 7.7 13.7L10.29 16.29C10.68 16.68 10.68 17.31 10.29 17.7L7.71 20.3C7.61742 20.3926 7.50751 20.466 7.38655 20.5161C7.26558 20.5662 7.13593 20.592 7.005 20.592C6.87407 20.592 6.74442 20.5662 6.62346 20.5161C6.5025 20.466 6.39258 20.3926 6.3 20.3C6.20742 20.2074 6.13398 20.0975 6.08388 19.9765C6.03377 19.8556 6.00798 19.7259 6.00798 19.595C6.00798 19.4641 6.03377 19.3344 6.08388 19.2135C6.13398 19.0925 6.20742 18.9826 6.3 18.89L7.18 18.01V17.95C5.38984 17.7373 3.75091 16.8416 2.60508 15.4499C1.45925 14.0581 0.894992 12.2777 1.03 10.48C1.29 6.78 4.55 4 8.26 4H10C10.55 4 11 4.45 11 5C11 5.55 10.55 6 10 6H8.22C5.52 6 3.15 8.04 3.01 10.72ZM15 11H20C21.1 11 22 10.1 22 9V6C22 4.9 21.1 4 20 4H15C13.9 4 13 4.9 13 6V9C13 10.1 13.9 11 15 11ZM20 9H15V6H20V9ZM20 20H15C13.9 20 13 19.1 13 18V15C13 13.9 13.9 13 15 13H20C21.1 13 22 13.9 22 15V18C22 19.1 21.1 20 20 20Z"
@@ -31,7 +31,7 @@ use yii\helpers\Url;
                           fill="black" fill-opacity="0.5"/>
                 </svg>
             </div>
-        </summary>
+        </div>
         <div class="Nzbiranik-tree__children">
             <?php echo $widget->render('_children', [
                 'items' => $widget->getItems($item[$widget->idField]),
