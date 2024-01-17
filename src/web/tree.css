@@ -15,7 +15,7 @@
     display: flex;
 }
 
-.Nzbiranik-tree details > summary::after{
+.Nzbiranik-tree details:has(.Nzbiranik-tree__children) > summary::after{
     content: url("up.svg");
     padding: 0 5px;
     position: absolute;
@@ -25,7 +25,7 @@
     cursor: pointer;
 }
 
-.Nzbiranik-tree details[open] > summary::after{
+.Nzbiranik-tree details:has(.Nzbiranik-tree__children)[open] > summary::after{
     content: url("down.svg");
 }
 
