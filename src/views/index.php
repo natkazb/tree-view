@@ -14,7 +14,6 @@ use Nzbiranik\TreeView\Tree;
         <?php echo $widget->render('_children', [
             'items' => $items,
             'widget' => $widget,
-            'parentId' => null,
         ]); ?>
     </div>
 </div>
