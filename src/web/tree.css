@@ -43,8 +43,10 @@
 
 .Nzbiranik-tree .Nzbiranik-tree__button-move-down {
     cursor: pointer;
+    padding: 0 3px;
 }
 
 .Nzbiranik-tree .Nzbiranik-tree__button-move-up {
     cursor: pointer;
+    padding: 0 3px;
 }
