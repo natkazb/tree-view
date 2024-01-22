@@ -1,6 +1,7 @@
 <?php
 
 use Nzbiranik\TreeView\Tree;
+use yii\helpers\Url;
 
 /** @var array $items */
 /** @var Tree $widget */
@@ -16,4 +17,10 @@ use Nzbiranik\TreeView\Tree;
             'widget' => $widget,
         ]); ?>
     </div>
+    <?php if (!empty($widget->addChildUrl)) : ?>
+        <div class="Nzbiranik-tree__add-child">
+            <a href="<?php echo Url::to([$widget->addChildUrl]) ?>">
+            </a>
+        </div>
+    <?php endif; ?>
 </div>
