@@ -23,8 +23,6 @@
     right: 0;
     transform: translateY(-50%);
     cursor: pointer;
-    width: 24px;
-    height: 24px;
 }
 
 .Nzbiranik-tree details:has(details)[open] > summary::after{
