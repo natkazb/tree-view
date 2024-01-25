@@ -33,7 +33,6 @@
 
 .Nzbiranik-tree .Nzbiranik-tree__add-child {
     padding: 0 3px;
-    content: url("add.svg");
 }
 
 .Nzbiranik-tree .Nzbiranik-tree__draggable-item_dragging {
